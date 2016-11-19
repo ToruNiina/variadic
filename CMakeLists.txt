@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-set(SOURCE_CODE_FILES pack comprehension quicksort reverse)
+set(SOURCE_CODE_FILES pack comprehension quicksort reverse max)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/)
 add_definitions("-std=c++11")
 
