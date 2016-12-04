@@ -11,6 +11,7 @@ static_assert(std::is_same<
             std::integral_constant<int, 9>,
             std::integral_constant<int, 4>,
             std::integral_constant<int, 6>,
+            std::integral_constant<int, 6>,
             std::integral_constant<int, 7>,
             std::integral_constant<int, 3>
         >::type,
@@ -18,6 +19,7 @@ static_assert(std::is_same<
         std::integral_constant<int, 3>,
         std::integral_constant<int, 4>,
         std::integral_constant<int, 5>,
+        std::integral_constant<int, 6>,
         std::integral_constant<int, 6>,
         std::integral_constant<int, 7>,
         std::integral_constant<int, 9>
