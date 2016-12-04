@@ -1,5 +1,6 @@
 #include "max.hpp"
 #include <type_traits>
+#include <cstdint>
 
 template<bool B, typename T1, typename T2>
 struct bifurcation;
@@ -20,20 +21,17 @@ struct Greater;
 template<typename T1, typename T2>
 struct Greater
 {
-    typedef typename bifurcation<(T1::value > T2::value), T1, T2>::type type;
+    typedef typename bifurcation<(sizeof(T1) > sizeof(T2)), T1, T2>::type type;
 };
 
 static_assert(std::is_same<
     typename max<Greater,
-            std::integral_constant<int, 5>,
-            std::integral_constant<int, 1>,
-            std::integral_constant<int, 9>,
-            std::integral_constant<int, 4>,
-            std::integral_constant<int, 6>,
-            std::integral_constant<int, 7>,
-            std::integral_constant<int, 3>
+            std::int8_t,
+            std::int16_t,
+            std::int32_t,
+            std::int64_t
         >::type,
-    std::integral_constant<int, 9>
+    std::int64_t
     >::value, "max");
 
 int main(){return 0;}
