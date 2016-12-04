@@ -13,10 +13,10 @@ struct reverse_impl<pack<Ts...>>
             >::type type;
 };
 
-template<typename T>
-struct reverse_impl<pack<T>>
+template<>
+struct reverse_impl<pack<>>
 {
-    typedef pack<T> type;
+    typedef pack<> type;
 };
 
 template<template<typename ... T>class target, typename ... Ts>
