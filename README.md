@@ -3,9 +3,9 @@ variadic
 
 `variadic template`で遊んだコード。
 
-## build
+## testing
 
-building works as a test.
+全てのテストは`static_assert`によって為されます。
 
 ```sh
 $ mkdir build
