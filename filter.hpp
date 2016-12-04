@@ -27,10 +27,10 @@ struct filter_impl<T_cond, pack<T1, Ts...>>
             typename filter_impl<T_cond, pack<Ts...>>::type>::type type;
 };
 
-template<template<typename T>class T_cond, typename T1>
-struct filter_impl<T_cond, pack<T1>>
+template<template<typename T>class T_cond>
+struct filter_impl<T_cond, pack<>>
 {
-    typedef typename conditional_append<T_cond<T1>::value, T1, pack<>>::type type;
+    typedef pack<> type;
 };
 
 template<template<typename T>class T_cond, typename ... Ts>
