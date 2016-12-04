@@ -1,5 +1,5 @@
-#ifndef VARIADIC_TEMPLATE_COMPREHENSION
-#define VARIADIC_TEMPLATE_COMPREHENSION
+#ifndef VARIADIC_TEMPLATE_FILTER
+#define VARIADIC_TEMPLATE_FILTER
 #include "pack.hpp"
 
 template<bool cond, typename T, typename ... Ts>
@@ -18,25 +18,25 @@ struct conditional_append<false, T, pack<Ts...>>
 };
 
 template<template<typename T>class T_cond, typename ... Ts>
-struct comprehension_impl;
+struct filter_impl;
 
 template<template<typename T>class T_cond, typename T1, typename ... Ts>
-struct comprehension_impl<T_cond, pack<T1, Ts...>>
+struct filter_impl<T_cond, pack<T1, Ts...>>
 {
     typedef typename conditional_append<T_cond<T1>::value, T1,
-            typename comprehension_impl<T_cond, pack<Ts...>>::type>::type type;
+            typename filter_impl<T_cond, pack<Ts...>>::type>::type type;
 };
 
 template<template<typename T>class T_cond, typename T1>
-struct comprehension_impl<T_cond, pack<T1>>
+struct filter_impl<T_cond, pack<T1>>
 {
     typedef typename conditional_append<T_cond<T1>::value, T1, pack<>>::type type;
 };
 
 template<template<typename T>class T_cond, typename ... Ts>
-struct comprehension
+struct filter
 {
-    typedef typename comprehension_impl<T_cond, pack<Ts...>>::type type;
+    typedef typename filter_impl<T_cond, pack<Ts...>>::type type;
 };
 
-#endif // VARIADIC_TEMPLATE_COMPREHENSION
+#endif // VARIADIC_TEMPLATE_FILTER
